@@ -3,7 +3,7 @@ BEGIN;
 DROP SCHEMA IF EXISTS eli CASCADE;
 CREATE SCHEMA eli;
 
-CREATE TABLE eli.person (
+CREATE TABLE eli.user (
 	id TEXT PRIMARY KEY NOT NULL,
 	first_name TEXT NOT NULL,
 	last_name TEXT NOT NULL,
@@ -22,7 +22,7 @@ CREATE TABLE eli.subscription_type (
 CREATE TABLE eli.subscription (
 	id SERIAL PRIMARY KEY,
 	type_id INTEGER REFERENCES eli.subscription_type (id) ON DELETE CASCADE ON UPDATE CASCADE,
-	person_id TEXT REFERENCES eli.person (id)  ON DELETE CASCADE ON UPDATE CASCADE,
+	user_id TEXT REFERENCES eli.user (id)  ON DELETE CASCADE ON UPDATE CASCADE,
 	number_of_enters INTEGER NOT NULL,
 	opening_date DATE NOT NULL,
 	expiration_date DATE NOT NULL
